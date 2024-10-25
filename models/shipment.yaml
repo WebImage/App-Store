@@ -1,0 +1,14 @@
+shipment:
+  plural: shipments
+  properties:
+    order: '#order'
+    toAddress: '#customerAddress'
+    fromAddress: '#customerAddress'
+    trackingNo: string(100)
+    status: string(1) # '#shipmentStatus'
+
+shipmentItem:
+    plural: shipmentItems
+    properties:
+        shipment: '#shipment'
+        orderItem: '#orderItem'

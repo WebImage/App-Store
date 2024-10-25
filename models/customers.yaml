@@ -1,0 +1,107 @@
+customerAddress:
+  plural: customerAddresses
+  properties:
+    id: integer
+    attn: string(30)
+    street1: string(30)
+    street2: string(30)
+    street3: string(30)
+    city: string(30)
+    state: string(3)
+    country: string(3)
+    name: string(30)
+    salutation: string(30)
+    zip: string(10)
+    crossStreet: string(30)
+    fax: string(30)
+    phone: string(30)
+    email: string
+    latitude: decimal(10,6)
+    longitude: decimal(10,6)
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'
+    type: string(10)
+
+customer:
+  plural: customers
+  properties:
+    id: integer
+    #    AccrRevAcct: string(10)
+    #    AccrRevSub: string(24)
+    accountNo: string(30)
+    #    agentID: string(10)
+    #    ApplFinChrg: smallint(6)
+    #    arAcct: string(10)
+    #    arSub: string(24)
+#    attn: string(30)
+    #    autoApply: smallint(6)
+    #    bankID: string(10)
+    billAddress: '#customerAddress'
+    shipAddress: '#customerAddress'
+    #    billThruProject: smallint(6)
+    #    cardExp: dateTime
+    #    cardHldrName: string(30)
+    #    cardNbr: string(20)
+    #    cardType: string(1)
+    #    classId: string(6)
+    #    consolInv: smallint(6)
+    #    crLmt: double
+    latitude: decimal(10,6)
+    longitude: decimal(10,6)
+    created: dateTime
+    #    createdProg: string(8)
+    #    createdBy: string(10)
+    #    curyId: string(4)
+    #    curyPrcLvlRtTp: string(6)
+    #    curyRateType: string(6)
+    #    custFillPriority: integer
+    #    dfltShipToId: string(10)
+    dunMsg: integer
+    email: string(30)
+    fax: string(30)
+    #    invtSubst: integer
+    #    languageID: string(4)
+    updated: dateTime
+    #    updatedProg: string(8)
+    #    updatedUser: string(10)
+    name: string(30)
+    #    noteId: int(11)
+    #    oneDraft: integer
+    #    perNbr: string(6)
+    phone: string(30)
+    #    pmtMethod: string(1)
+    #    prcLvlId: string(10)
+    #    prePayAcct: string(10)
+    #    prePaySub: string(24)
+    #    priceClassID: string(6)
+    #    prtMCStmt: integer
+    #    prtStmt: integer
+    salutation: string(30)
+    #    setupDate: dateTime
+    #    shipCmplt: integer
+    #    shipPctAct: string(1)
+    #    shipPctMax: double
+    #    sICCode1: string(4)
+    #    sICCode2: string(4)
+    #    singleInvoice: integer
+    #    slsAcct: string(10)
+    #    salesPerson: string(10)
+    #    slsSub: string(24)
+#    region: string(3)
+    status: string(1)
+    #    stmtCycleId: string(2)
+    #    stmtType: string(1)
+    #    taxDflt: string(1)
+    #    taxExemptNbr: string(15)
+    #    taxID00: string(10)
+    #    taxID01: string(10)
+    #    taxID02: string(10)
+    #    taxID03: string(10)
+    #    taxLocId: string(15)
+    #    taxRegNbr: string(15)
+    #    terms: string(2)
+    #    territory: string(10)
+    #    tradeDisc: double
+#    zip: string(10)

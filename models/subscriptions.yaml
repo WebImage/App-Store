@@ -1,0 +1,121 @@
+# The available subscriptions that a user can subscribe to
+plan:
+  plural: plans
+  properties:
+    id: integer
+    name: string(100)
+    description: text
+    status: string(1)
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'
+    cycleLength: integer # For subscriptions: indicates the number of hours, days, weeks, months that this SKU covers
+    cycleMode: string(1) # H=Hours, D=Days, W=Weeks, M=Months, Q=Quarterly, Y=years
+    numCycles: integer # For recurring billing, the maximum number of cycles to bill, 0 might be used for indefinite
+    autoRenew: boolean
+    renewAsPlan: '#plan'
+#    options: '#planOption[]'
+
+#planOption:
+#  plural: planOptions
+#  properties:
+#    id: integer
+#    name: string
+#    created: dateTime
+#    createdBy: '#$userModel'
+#    updated: dateTime
+#    updatedBy: '#$userModel'
+
+# The skus that are associated with the subscription plan
+planSku:
+  plural: planSkus
+  properties:
+    id: integer
+    plan: '#plan'
+    sku: '#sku'
+    price: decimal(10,2)
+    #    cycleLength: integer
+    #    cycleMode: string(1)
+    #    numCycles: integer
+    status: string(1)
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+# Currently available offers
+planOffer:
+  plural: planOffers
+  properties:
+    id: integer
+    name: string
+    description: text
+    start: dateTime
+    end: dateTime
+    # discountType can be:
+    #   "-" for a fixed amount discount
+    #   "=" for a fixed price
+    #   "%" for a percentage discount
+    discountType: string(1)
+    discountAmount: decimal(10,2)
+    discountCycles: integer
+#    durationMonths: integer
+#    plan: '#plan'
+#    sku: '#sku'
+#    price: decimal(10,2)
+#    cycleLength: integer
+#    cycleMode: string(1)
+#    maxCyclesCount: integer
+#    status: string(1)
+#    created: dateTime
+#    createdBy: '#$userModel'
+#    updated: dateTime
+#    updatedBy: '#$userModel'
+
+subscription:
+  plural: subscriptions
+  properties:
+    id: integer
+    #    sku: '#sku'
+    user: '#$userModel'
+    trialStart: dateTime
+    trialEnd: dateTime
+    plan: '#plan'
+    offer: '#planOffer'
+    status: string(1)
+    #    offerStart: dateTime
+    #    offerEnd: dateTime
+    nextBillingDate: dateTime
+    autoRenew: boolean
+    subscribedDate: dateTime
+    unsubscribedDate: dateTime
+
+subscriptionSku:
+  plural: subscriptionSkus
+  properties:
+    id: integer
+    subscription: '#subscription'
+    sku: '#sku'
+    price: decimal(10,2)
+    cycleLength: integer
+    cycleMode: string(1)
+    numCycles: integer
+    status: string(1)
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+subscriptionHistory:
+  plural: subscriptionHistories
+  properties:
+    id: integer
+    subscription: '#subscription'
+    plan: '#plan'
+    start: dateTime
+    end: dateTime
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'

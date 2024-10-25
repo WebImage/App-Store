@@ -1,0 +1,17 @@
+{
+    "name": "webimage/app-store",
+    "description": "E-commerce functionality plugin",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "WebImage\\Store\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert Jones II",
+            "email": "rjones@corporatewebimage.com"
+        }
+    ],
+    "require": {}
+}

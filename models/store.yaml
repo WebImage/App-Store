@@ -1,0 +1,220 @@
+metaType:
+  plural: metaTypes
+  properties:
+    id: integer
+    classType: string(30) # product, sku, category
+    name: string(50)
+    description: text
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+product:
+  plural: products
+  properties:
+    created: dateTime
+    createdBy: '#$userModel'
+    enable: boolean
+    id: integer
+    code: string(20)
+    name: string
+    description: text
+    status: string(1)
+    #    template: string
+    type: string(30) # Internal string to identify product type for
+    #    manufacturer: '#manufacturer'
+    #  | meta_class_id   | int(11)      | YES  |     | NULL    |                |
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+sku:
+  plural: skus
+  properties:
+    created: dateTime
+    createdBy: '#$userModel'
+    id: integer
+    product: '#product'
+    code: string(30)
+    status: string(1)
+    price: decimal(10,2)
+    #    cycleLength: integer # For subscriptions: indicates the number of hours, days, weeks, months that this SKU covers
+    #    cycleMode: string(1) # H=Hours, D=Days, W=Weeks, M=Months, Y=years
+    description: text
+    enable: boolean
+    #    licenseAgreementId: integer
+    # signatureRequired: boolean
+    #    maxCyclesCount: integer # For recurring billing, the maximum number of cycles to bill
+    #    metaClassId: integer
+    name: string
+    sortorder: integer
+    updated: dateTime
+    updatedBy: '#user'
+    visible: boolean
+#    outOfStockVisible: boolean
+#    package: '#package'
+#    packageQty: integer
+#    reorderMinQty: integer
+#    reserveQty: integer
+#    shipEnabled: boolean
+#    skuTemplate: '#skuTemplate'
+#    skuType: integer
+#    snPackage: '#snPackage'
+#    stockQty: integer
+#    taxCategory: '#taxCategory'
+#    warehouse: '#warehouse'
+#    weight: decimal(10,4)
+#  | description   | text        | YES  |     | NULL    |                |
+#  | friendly_name | varchar(50) | YES  |     | NULL    |                |
+#  | is_system     | tinyint(4)  | NO   |     | 0       |                |
+#  | name          | varchar(50) | YES  |     | NULL    |                |
+#  | parent_id     | int(11)     | YES  |     | NULL    |                |
+#  | primary_key   | varchar(30) | YES  |     | NULL    |                |
+#  | table_name    | varchar(50) | YES  |     | NULL    |                |
+#  | updated       | datetime    | YES  |     | NULL    |                |
+#  | updated_by    | int(11)     | YES  |     | NULL    |                |
+
+orderStatus:
+  plural: orderStatuses
+  properties:
+    id: integer
+    name: string(50)
+    internalName: string(50)
+    description: text
+    lookupKey: string(20)
+    sortorder: integer
+    created: dateTime
+    createdBy: '#$userModel'
+    updated: dateTime
+    updatedBy: '#$userModel'
+    customerVisible: boolean
+    internallyVisible: boolean
+
+order:
+  plural: orders
+  properties:
+    id: integer
+    #    affiliate: '#affiliate'
+    #    affiliatePercent: decimal(10,2)
+    #    completed: string(10)
+    created: dateTime
+    createdBy: '#$userModel'
+    #    customerDiscount: decimal(10, 2)
+    customer: '#$customerModel'
+    email: string(100)
+    total: decimal(10,2)
+    parent: '#order'
+    authCode: string
+    status: '#orderStatus'
+    shippingCost: decimal(10,2)
+    #    shippingMethod: '#shippingMethod'
+    shippingType: string(100)
+    tax: decimal(10,2)
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+orderItem:
+  plural: orderItems
+  properties:
+    id: integer
+    order: '#order'
+    #    listing: '#listing'
+    quantity: integer
+    price: decimal(10,2)
+    quantityShipped: integer
+    total: decimal(10,2)
+    discount: decimal(10, 2)
+    name: string(100)
+    sku: '#sku'
+
+#orderReturn:
+#  plural: orderReturns
+#  properties:
+#    id: integer
+#    order: '#order'
+#    rma: string(100)
+#    status: string(1)
+#    created: dateTime
+#    createdBy: '#$userModel
+#
+#orderItemReturn:
+#  plural: orderItemReturns
+#  properties:
+#    id: integer
+#    orderItem: '#orderItem'
+#    quantity: integer
+#    reason: string(100)
+#    status: string(1)
+#    created: dateTime
+#    createdBy: '#$userModel'
+#    updated: dateTime
+#    updatedBy: '#$userModel'
+
+orderItemParameter:
+  plural: orderItemParameters
+  properties:
+    created: dateTime
+    createdBy: '#$userModel'
+    id: integer
+    orderItem: '#orderItem'
+    name: string(100)
+    value: string(100)
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+#orderItemListing:
+#  plural: orderItemListings
+#  properties:
+#    id: integer
+#    orderItem: '#orderItems'
+#    listingArea: '#listingArea'
+
+invoice:
+  plural: invoices
+  properties:
+    id: integer
+    #    affiliate: '#affiliate'
+    #    affiliatePercent: decimal(10,2)
+    #    completed: string(10)
+    created: dateTime
+    createdBy: '#$userModel'
+    #    customerDiscount: decimal(10, 2)
+    customer: '#customer'
+    email: string(100)
+    total: decimal(10,2)
+    order: '#order'
+    parent: '#invoice'
+    authCode: string
+    #    status: '#orderStatus'
+    shippingCost: decimal(10,2)
+    #    shippingMethod: '#shippingMethod'
+    shippingType: string(100)
+    tax: decimal(10,2)
+    updated: dateTime
+    updatedBy: '#$userModel'
+
+invoiceItem:
+  plural: invoiceItems
+  properties:
+    id: integer
+    invoice: '#invoice'
+    #    listing: '#listing'
+    quantity: integer
+    price: decimal(10,2)
+    #    quantityShipped: integer
+    total: decimal(10,2)
+    discount: decimal(10, 2)
+    name: string(100)
+    sku: '#sku'
+
+payment:
+  plural: payments
+  properties:
+    id: integer
+
+paymentDetail:
+  plural: paymentDetails
+  properties:
+    id: integer
+    payment: '#payment'
+

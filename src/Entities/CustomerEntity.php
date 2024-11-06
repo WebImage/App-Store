@@ -80,22 +80,22 @@ class CustomerEntity extends ModelEntity
 
 	public function getBillingAddress(): ?CustomerAddressEntity
 	{
-		return $this->entity['billingAddress'] === null ? null : new CustomerAddressEntity($this->entity['billingAddress']);
+		return $this->entity['billAddress'] === null ? null : new CustomerAddressEntity($this->entity['billAddress']);
 	}
 
 	public function setBillingAddress(?CustomerAddressEntity $billingAddress)
 	{
-		$this->entity['billingAddress'] = $billingAddress->getEntity();
+		$this->entity['billAddress'] = $billingAddress->getEntity();
 	}
 
 	public function getShippingAddress(): ?CustomerAddressEntity
 	{
-		return $this->entity['shippingAddress'] === null ? null : new CustomerAddressEntity($this->entity['shippingAddress']);
+		return $this->entity['shipAddress'] === null ? null : new CustomerAddressEntity($this->entity['shipAddress']);
 	}
 
 	public function setShippingAddress(?CustomerAddressEntity $shippingAddress)
 	{
-		$this->entity['shippingAddress'] = $shippingAddress->getEntity();
+		$this->entity['shipAddress'] = $shippingAddress->getEntity();
 	}
 //
 //	public function getBillStreet1(): ?string

@@ -2,15 +2,15 @@ customerAddress:
   plural: customerAddresses
   properties:
     id: integer
+    customer: '#customer'
     attn: string(30)
-    street1: string(30)
-    street2: string(30)
-    street3: string(30)
+    street1: string(100)
+    street2: string(100)
+    street3: string(100)
     city: string(30)
     state: string(3)
     country: string(3)
     name: string(30)
-    salutation: string(30)
     zip: string(10)
     crossStreet: string(30)
     fax: string(30)

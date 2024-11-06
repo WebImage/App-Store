@@ -17,12 +17,12 @@ class CustomerAddressEntity extends ModelEntity
 		$this->entity['id'] = $id;
 	}
 
-	public function getAttn(): ?string
+	public function getAttention(): ?string
 	{
 		return $this->entity['attn'];
 	}
 
-	public function setAttn(string $attn)
+	public function setAttention(string $attn)
 	{
 		$this->entity['attn'] = $attn;
 	}
@@ -85,16 +85,6 @@ class CustomerAddressEntity extends ModelEntity
 	public function setName(string $name)
 	{
 		$this->entity['name'] = $name;
-	}
-
-	public function getSalutation(): ?string
-	{
-		return $this->entity['salutation'];
-	}
-
-	public function setSalutation(string $salutation)
-	{
-		$this->entity['salutation'] = $salutation;
 	}
 
 	public function getState(): ?string
@@ -184,7 +174,7 @@ class CustomerAddressEntity extends ModelEntity
 
 	public function setCustomer(CustomerEntity $customer)
 	{
-		$this->entity['customer'] = $customer;
+		$this->entity['customer'] = $customer->getEntity();
 	}
 
 	public function getCrossStreet(): string
@@ -196,23 +186,24 @@ class CustomerAddressEntity extends ModelEntity
 	{
 		$this->entity['crossStreet'] = $crossStreet;
 	}
+
 	public function getLatitude(): ?float
 	{
-		return $this->entity['gpsLat'];
+		return $this->entity['latitude'];
 	}
 
-	public function setLatitude(?float $gpsLat)
+	public function setLatitude(?float $latitude)
 	{
-		$this->entity['gpsLat'] = $gpsLat;
+		$this->entity['latitude'] = $latitude;
 	}
 
 	public function getLongitude(): ?float
 	{
-		return $this->entity['gpsLong'];
+		return $this->entity['longitude'];
 	}
 
-	public function setLongitude(?float $gpsLong)
+	public function setLongitude(?float $longitude)
 	{
-		$this->entity['gpsLong'] = $gpsLong;
+		$this->entity['longitude'] = $longitude;
 	}
 }

@@ -1,6 +1,7 @@
 shipment:
   plural: shipments
   properties:
+    id: integer
     order: '#order'
     toAddress: '#customerAddress'
     fromAddress: '#customerAddress'

@@ -16,9 +16,11 @@ abstract class CustomerAddressRepository extends ModelRepository
 		parent::__construct($repo, $model);
 	}
 
-	public function create(): CustomerAddressEntity
+	public function create(string $type): CustomerAddressEntity
 	{
-		return $this->entityToCustomerAddress(parent::createEntity());
+		$address = $this->entityToCustomerAddress(parent::createEntity());
+		$address->setType($type);
+		return $address;
 	}
 
 	public function get(int $id): ?CustomerAddressEntity
